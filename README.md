@@ -1,10 +1,6 @@
-Sinatra
+API Madness
 =============
 
-Brought to you by Lighthouse Labs
+This was a Lighthouse Labs assignment designed to help us learn how to use external APIs. I used the LCBO API so that a user can search for drinks using this app. The results start loading as soon as the user types in at least three characters.
 
-## Getting Started
-
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+This is still a work in progress.
