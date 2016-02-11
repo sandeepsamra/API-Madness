@@ -3,25 +3,24 @@ $(document).ready(function() {
 
 var API_KEY = "MDowMGVhNWJjZS1kMDNkLTExZTUtOWYyYS1kMzIwMWQ3ZDVhZjc6RUFMVVpUMTlPRkNtVHNRaXZjQUgxclp1T2dVQ3l3NXZIWEJ3";
 
-var beerTemplate = _.template($('#beer-template').html());
+var drinkTemplate = _.template($('#drink-template').html());
 
-function getBeerList(name) {
+function getDrinkList(name) {
   $.ajax({
     url: 'https://lcboapi.com/products',
     data: {q: name},
     method: 'GET',
     headers: { 'Authorization': "TOKEN " + API_KEY }
-  }).then(function(data) {    // Parse result into the webpage
+  }).then(function(data) {
     for(var i = 0; i < data.result.length; i++) {
-      var beer = data.result[i];
-      var output = beerTemplate({
-        name: beer.name,
-        origin: beer.origin,
-        image: beer.image_thumb_url
+      var drink = data.result[i];
+      var output = drinkTemplate({
+        name: drink.name,
+        origin: drink.origin,
+        image: drink.image_thumb_url
       });
-      console.log(output);
-      // console.log(beerTemplate);
-      $('#beer-table-results tbody').append(output);
+
+      $('#drink-table-results tbody').append(output);
     }
   });
 }
@@ -30,8 +29,8 @@ function getBeerList(name) {
     var input = $(event.target).val();
 
     if (input.length < 3) return;
-    $('#beer-table-results tbody').html('');
-    getBeerList(input);
+    $('#drink-table-results tbody').html('');
+    getDrinkList(input);
   }, 1000));
-  // Get results
+
 });
